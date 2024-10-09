@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        form { margin-bottom: 20px; }
+        .result { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Weather Checker</h1>
+    <form method="POST">
+        <input type="text" name="city" placeholder="Enter city name" required>
+        <button type="submit">Check Weather</button>
+    </form>
+
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% elif weather_data %}
+        <div class="result">
+            <h2>Weather in {{ weather_data.city }}</h2>
+            <p>Temperature: {{ weather_data.temperature }} °C</p>
+            <p>Pressure: {{ weather_data.pressure }} hPa</p>
+            <p>Humidity: {{ weather_data.humidity }}%</p>
+            <p>Description: {{ weather_data.description }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
